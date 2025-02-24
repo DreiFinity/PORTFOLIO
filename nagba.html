@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio</title>
+</head>
+<body>
+    <header>
+        <a href="#" class = "logo">JusDEV</a>
+
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Skills</a>
+            <a href="#">Education</a>
+            <a href="#">Experience</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <section class="home">
+        <div class="home-img">
+            <img src="C:\Users\User\Downloads\home.jpg" alt="">
+        </div>
+        <div class="home-content">
+            <h1>Hi it's <span>Andrei </span></h1>
+            <h3 class="typing-text">I'm a <span></span></h3>
+            <p>I develop websites, mobile applications, kiosk application, POS system. Contact me when you need one.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        <div>    
+        <a href="#" class="btn">Hire me</a>
+    </section>
+    <script>
+        const words = ["Web Developer", "Software Developer", "Web Designer", "Youtuber", "Script Writer"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const speed = 150; // Typing speed in ms
+        const typingElement = document.querySelector(".typing-text span");
+    
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentWord.substring(0, charIndex--);
+            } else {
+                typingElement.textContent = currentWord.substring(0, charIndex++);
+            }
+    
+            let delay = speed;
+            if (!isDeleting && charIndex === currentWord.length) {
+                delay = 2000; // Wait 2 seconds before deleting
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                delay = 500; // Pause before typing next word
+            }
+    
+            setTimeout(typeEffect, delay);
+        }
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            typeEffect();
+        });
+    </script>
+</body>
+</html>
